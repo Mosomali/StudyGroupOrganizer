@@ -1,10 +1,89 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Group Details</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Group Details</h1>-->
+
+<!--<p><strong>Group Name:</strong> <span th:text="${group.groupName}"></span></p>-->
+<!--<p><strong>Subject:</strong> <span th:text="${group.subject}"></span></p>-->
+<!--<p><strong>Description:</strong> <span th:text="${group.description}"></span></p>-->
+<!--<p><strong>Date Created:</strong> <span th:text="${group.dateCreated}"></span></p>-->
+<!--<p><strong>Admin:</strong> <span th:text="${group.admin.fullName}"></span></p>-->
+
+<!--<h2>Members</h2>-->
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>ID</th>-->
+<!--        <th>Name</th>-->
+<!--        <th>Email</th>-->
+<!--        &lt;!&ndash; Add more columns if needed &ndash;&gt;-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="member : ${group.members}">-->
+<!--        <td th:text="${member.id}"></td>-->
+<!--        <td th:text="${member.fullName}"></td>-->
+<!--        <td th:text="${member.email}"></td>-->
+<!--        &lt;!&ndash; Add more columns if needed &ndash;&gt;-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--<a href="/groups">Back to Groups</a>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Group Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container mt-4">
+    <h1 class="mb-4">Group Details</h1>
 
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>Group Name:</strong> <span th:text="${group.groupName}"></span></p>
+            <p><strong>Subject:</strong> <span th:text="${group.subject}"></span></p>
+            <p><strong>Description:</strong> <span th:text="${group.description}"></span></p>
+            <p><strong>Date Created:</strong> <span th:text="${group.dateCreated}"></span></p>
+            <p><strong>Admin:</strong> <span th:text="${group.admin.fullName}"></span></p>
+        </div>
+    </div>
+
+    <h2 class="mb-4">Members</h2>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <!-- Add more columns if needed -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${group.members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.fullName}"></td>
+            <td th:text="${member.email}"></td>
+            <!-- Add more columns if needed -->
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/groups" class="btn btn-primary mt-4">Back to Groups</a>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

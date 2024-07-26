@@ -109,41 +109,80 @@
         <div class="card-header">
             <h3>Create New Study Group</h3>
         </div>
-        <div class="card-body">
-            <form th:action="@{${group.id} != null} ? @{/groups/{id}/edit(id=${group.id})} : @{/groups/new}" method="post" th:object="${group}">
-                <div class="form-group">
-                    <label for="groupName">Group Name</label>
-                    <input type="text" class="form-control" id="groupName" placeholder="Enter group name" th:field="*{groupName}">
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" class="form-control" id="subject" placeholder="Enter subject" th:field="*{subject}">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" rows="3" placeholder="Enter group description" th:field="*{description}"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="dateCreated">Date Created</label>
-                    <input type="datetime-local" class="form-control" id="dateCreated" th:field="*{dateCreated}">
-                </div>
-                <div class="form-group">
-                    <label for="admin">Admin</label>
-                    <select class="form-control" id="admin" name="adminId">
-                        <option value="" disabled selected>Select Admin</option>
-                        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.fullName}"></option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <span th:text="${group.id} != null ? 'Update Group' : 'Create Group'"></span>
-                </button>
-            </form>
+ <div class="card-body">
+    <form th:action="@{${group.id} != null} ? @{/groups/{id}/edit(id=${group.id})} : @{/groups/new}" method="post" th:object="${group}">
+        <div class="form-group">
+            <label for="groupName">Group Name</label>
+            <input type="text" class="form-control" id="groupName" placeholder="Enter group name" th:field="*{groupName}">
         </div>
-    </div>
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control" id="subject" placeholder="Enter subject" th:field="*{subject}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3" placeholder="Enter group description" th:field="*{description}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="dateCreated">Date Created</label>
+            <input type="datetime-local" class="form-control" id="dateCreated" th:field="*{dateCreated}">
+        </div>
+        <div class="form-group">
+            <label for="admin">Admin</label>
+            <select class="form-control" id="admin" name="adminId">
+                <option value="" disabled selected>Select Admin</option>
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.fullName}"></option>
+            </select>
+
+            <label for="members">Members:</label>
+            <select id="members" name="memberIds" multiple>
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.fullName}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <span th:text="${group.id} != null ? 'Update Group' : 'Create Group'"></span>
+        </button>
+    </form>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+</div>
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Create/Edit Group</title>-->
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<form th:action="@{/groups/new}" th:object="${group}" method="post">-->
+<!--    <label for="groupName">Group Name:</label>-->
+<!--    <input type="text" id="groupName" th:field="*{groupName}" />-->
+
+<!--    <label for="subject">Subject:</label>-->
+<!--    <input type="text" id="subject" th:field="*{subject}" />-->
+
+<!--    <label for="description">Description:</label>-->
+<!--    <input type="text" id="description" th:field="*{description}" />-->
+
+<!--    <label for="admin">Admin:</label>-->
+<!--    <select id="admin" name="adminId" th:field="*{admin.id}">-->
+<!--        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.fullName}"></option>-->
+<!--    </select>-->
+
+<!--    <label for="members">Members:</label>-->
+<!--    <select id="members" name="memberIds" multiple>-->
+<!--        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.fullName}"></option>-->
+<!--    </select>-->
+
+<!--    <button type="submit">Save</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
 

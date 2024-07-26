@@ -19,7 +19,7 @@ public class UserController {
     }
     @GetMapping
     public String getAllUser(Model model){
-        List<User> users =userService.getAllUser();
+        List<User> users =userService.getAllUsers();
         model.addAttribute("users",users);
         return "users";
     }

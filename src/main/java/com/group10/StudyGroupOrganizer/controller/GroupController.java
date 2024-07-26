@@ -2,8 +2,6 @@ package com.group10.StudyGroupOrganizer.controller;
 
 import com.group10.StudyGroupOrganizer.model.Group;
 import com.group10.StudyGroupOrganizer.model.User;
-import com.group10.StudyGroupOrganizer.repository.GroupRepository;
-import com.group10.StudyGroupOrganizer.repository.UserRepository;
 import com.group10.StudyGroupOrganizer.service.GroupService;
 import com.group10.StudyGroupOrganizer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.PublicKey;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -29,61 +25,99 @@ public class GroupController {
     }
 
     @GetMapping
-    public String getAllGroups(Model model){
+    public String getAllGroups(Model model) {
         List<Group> groups = groupService.getAllgroups();
         model.addAttribute("groups", groups);
         return "groups";
     }
 
+//    @GetMapping("/{id}")
+//    public String getGroupById(@PathVariable Long id, Model model) {
+//        Group group = groupService.getGroupsById(id);
+//        model.addAttribute("group", group);
+//        return "group-detail";
+//    }
     @GetMapping("/{id}")
-    public String getGroupById(@PathVariable Long id, Model model){
+    public String getGroupById(@PathVariable Long id, Model model) {
         Group group = groupService.getGroupsById(id);
+        System.out.println("Group: " + group); // Debugging statement
+        System.out.println("Members: " + group.getMembers()); // Debugging statement
         model.addAttribute("group", group);
         return "group-detail";
     }
 
 
     @GetMapping("/new")
-    public String showGroupForm(Model model){
+    public String showGroupForm(Model model) {
         model.addAttribute("group", new Group());
-        model.addAttribute("users", userService.getAllUser()); // To populate admin dropdown
+        model.addAttribute("users", userService.getAllUsers()); // Populate users for admin dropdown
         return "group-form";
     }
 
+//    @PostMapping("/new")
+//    public String saveGroup(@ModelAttribute("group") Group group,
+//                            @RequestParam("adminId") Long adminId,
+//                            @RequestParam("memberIds") List<Long> memberIds) {
+//        User admin = userService.getUserById(adminId);
+//        if (admin == null) {
+//            return "redirect:/error"; // Handle this appropriately
+//        }
+//        group.setAdmin(admin);
+//        group.setDateCreated(LocalDateTime.now());
+//
+//        List<User> members = userService.getUsersByIds(memberIds);
+//        group.setMembers(members);
+//
+//        groupService.saveGroup(group);
+//        return "redirect:/groups";
+//    }
     @PostMapping("/new")
-    public String saveGroup(@ModelAttribute("group") Group group, @RequestParam("adminId") Long adminId, Model model){
+    public String saveGroup(@ModelAttribute("group") Group group,
+                            @RequestParam("adminId") Long adminId,
+                            @RequestParam("memberIds") List<Long> memberIds) {
         User admin = userService.getUserById(adminId);
         if (admin == null) {
             return "redirect:/error"; // Handle this appropriately
         }
         group.setAdmin(admin);
         group.setDateCreated(LocalDateTime.now());
+
+        List<User> members = userService.getUsersByIds(memberIds);
+        group.setMembers(members);
+
+        System.out.println("Saving Group: " + group); // Debugging statement
         groupService.saveGroup(group);
         return "redirect:/groups";
     }
 
 
     @GetMapping("/{id}/edit")
-    public String showEditForm(@PathVariable Long id, Model model){
+    public String showEditForm(@PathVariable Long id, Model model) {
         Group group = groupService.getGroupsById(id);
         model.addAttribute("group", group);
-        model.addAttribute("users", userService.getAllUser()); // To populate admin dropdown
+        model.addAttribute("users", userService.getAllUsers()); // Populate users for admin dropdown
         return "group-form";
     }
 
     @PostMapping("/{id}/edit")
-    public String updateGroup(@ModelAttribute("group") Group group, @RequestParam("adminId") Long adminId){
+    public String updateGroup(@ModelAttribute("group") Group group,
+                              @RequestParam("adminId") Long adminId,
+                              @RequestParam("memberIds") List<Long> memberIds) {
         User admin = userService.getUserById(adminId);
         if (admin == null) {
             return "redirect:/error"; // Handle this appropriately
         }
         group.setAdmin(admin);
+
+        List<User> members = userService.getUsersByIds(memberIds);
+        group.setMembers(members);
+
         groupService.saveGroup(group);
-        return "redirect:/group-detail";
+        return "redirect:/groups";
     }
 
     @GetMapping("/{id}/delete")
-    public String deleteGroup(@PathVariable Long id){
+    public String deleteGroup(@PathVariable Long id) {
         groupService.deleteGroup(id);
         return "redirect:/groups";
     }

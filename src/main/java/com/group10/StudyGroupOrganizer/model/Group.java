@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,10 +16,18 @@ public class Group {
 
     private String groupName;
     private String subject;
-
     private String description;
     private LocalDateTime dateCreated;
+
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     private User admin;
+
+    @ManyToMany
+    @JoinTable(
+            name = "group_members",
+            joinColumns = @JoinColumn(name = "group_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> members;
 }
