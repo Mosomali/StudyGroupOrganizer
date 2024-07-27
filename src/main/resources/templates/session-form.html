@@ -38,7 +38,7 @@
             <form th:action="@{${studySession.id} != null} ? @{/sessions/{id}/edit(id=${studySession.id})} : @{/sessions/new}" method="post" th:object="${studySession}">
                 <div class="form-group">
                     <label for="sessionName">Session Name</label>
-                    <input type="text" class="form-control" id="sessionName" placeholder="Enter session name" th:field="*{sessionName}">
+                    <input type="text" class="form-control" id="sessionName" placeholder="Enter session name" th:field="*{sessionName}" required>
                 </div>
                 <div class="form-group">
                     <label for="dateTime">Date</label>

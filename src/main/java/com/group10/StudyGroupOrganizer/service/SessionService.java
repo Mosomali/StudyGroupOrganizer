@@ -29,6 +29,10 @@ public class SessionService {
         return sessionRepository.save(session);
     }
 
+    public List<Session> getSessionsByGroupId(Long groupId) {
+        return sessionRepository.findByGroupId(groupId);
+    }
+
     public void deleteSession(Long id) {
         sessionRepository.deleteById(id);
     }

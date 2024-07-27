@@ -7,13 +7,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin=
                   "anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .hero {
+      background-color: #f8f9fa;
+      padding: 50px 0;
+    }
+    .hero-content {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+    }
+    .feature {
+      text-align: center;
+      padding: 20px;
+    }
+    .feature img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    </style>
+    </style>
 </head>
 <body>
 <div class="container  ">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <div class="col-md-3 mb-2 mb-md-0">
             <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <img src="logo.jpeg" alt="" width="45px">
+                <h2>Stdudy<span class="color-primery">Group</span></h2>
             </a>
         </div>
 
@@ -25,14 +51,61 @@
         </ul>
 
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2"  href="#">Login</button>
-
             <button type="button" class="btn btn-primary">
-                <a href="/users/new" class="nav-link px-2 text-light">Sign-up</a>
+                <a href="/users/new" class="nav-link px-2 text-light">Create User</a>
             </button>
         </div>
 
     </header>
 </div>
+<div class="container mb-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-4 fw-bold lh-1">Organize Your Study Groups with Ease</h1>
+            <p class="lead">Efficiently manage your study sessions, track progress, and collaborate seamlessly.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Get Started Today</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+            </div>
+        </div>
+        <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+            <img class="rounded-lg-3" src="std2.jpg" alt="" width="450">
+        </div>
+    </div>
+</div>
+<section class="hero">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 feature">
+                <img src="create.png" alt="Create Groups Icon" class="img-fluid">
+                <h3>Create and Manage Groups</h3>
+                <p>Easily set up study groups for different subjects or projects.</p>
+            </div>
+            <div class="col-md-3 feature">
+                <img src="schedule.png" alt="Schedule Sessions Icon" class="img-fluid">
+                <h3>Schedule Sessions</h3>
+                <p>Plan and schedule study sessions with group members.</p>
+            </div>
+            <div class="col-md-3 feature">
+                <img src="collobrate.png" alt="Collaborate Icon" class="img-fluid">
+                <h3>Collaborate Effectively</h3>
+                <p>Share resources, communicate, and track group progress in one place.</p>
+            </div>
+            <div class="col-md-3 feature">
+                <img src="expr.png" alt="Personalized Experience Icon" class="img-fluid">
+                <h3>Personalized Experience</h3>
+                <p>Tailor your study plans according to your group's needs.</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <p>&copy; 2024 Study Group Organizer. All rights reserved.</p>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

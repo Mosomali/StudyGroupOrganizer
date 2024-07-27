@@ -79,7 +79,42 @@
 
     <a href="/groups" class="btn btn-primary mt-4">Back to Groups</a>
 </div>
-
+<div class="container mt-5">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Sessions</h3>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Session Name</th>
+                    <th>Date</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Location</th>
+                    <th>Group</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="studySession : ${sessions}">
+                    <td th:text="${studySession.sessionName}">Session Name</td>
+                    <td th:text="${#temporals.format(studySession.dateTime, 'yyyy-MM-dd')}">Date</td>
+                    <td th:text="${#temporals.format(studySession.startDate, 'yyyy-MM-dd')}">Start Date</td>
+                    <td th:text="${#temporals.format(studySession.endDate, 'yyyy-MM-dd')}">End Date</td>
+                    <td th:text="${studySession.location}">Location</td>
+                    <td th:text="${studySession.group.groupName}">Group</td>
+                    <td>
+                        <a class="btn btn-secondary" th:href="@{/sessions/{id}/edit(id=${studySession.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/sessions/{id}/delete(id=${studySession.id})}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>

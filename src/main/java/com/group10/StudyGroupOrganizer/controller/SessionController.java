@@ -40,7 +40,7 @@ public class SessionController {
     @PostMapping("/new")
     public String saveSession(@ModelAttribute("studySession") Session session) {
         sessionService.saveSession(session);
-        return "redirect:/sessions";
+        return "redirect:/groups";
     }
 
     @GetMapping("/{id}/edit")

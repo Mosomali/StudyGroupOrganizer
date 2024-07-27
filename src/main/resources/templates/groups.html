@@ -1,13 +1,77 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Document</title>-->
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    <a class="navbar-brand" href="#">Study Group Organizer</a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">index</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="group-form.html">CrreateGroup</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="group-page.html">GroupDetail</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">Logout</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--&lt;!&ndash;<div class="card mb-4">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="card-header">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h3>My Study Groups</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="card-body">&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; Example Study Group &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="card mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="card-body" th:each="group: ${groups}">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5 class="card-title" th:text="${group.groupName}">Group_name:</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="card-text" th:text="${group.subject}">Subject</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="card-text" th:text="${group.description}">Description</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="card-text" th:text="${#temporals.format(group.dateCreated, 'yyyy-MM-dd HH:mm:ss')}">Date Created</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="card-text" th:text="${group.admin.fullName}"></p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <a class="btn btn-secondary"   th:href="@{/groups/{id}/edit(id=${group.id})}">Edit</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="btn btn-danger"  th:href="@{/groups/{id}/delete(id=${group.id})}"> Delete</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; Repeat the above block for each study group &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+
+
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Group Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
     <a class="navbar-brand" href="#">Study Group Organizer</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,16 +79,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">index</a>
+                <a class="nav-link text-light" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="group-form.html">CrreateGroup</a>
+                <a class="nav-link text-light" href="/sessions/new">Create Session</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="group-page.html">GroupDetail</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link text-light" href="/groups/new">CreateGroup</a>
             </li>
         </ul>
     </div>
@@ -34,32 +95,27 @@
         <h3>My Study Groups</h3>
     </div>
     <div class="card-body">
-        <!-- Example Study Group -->
-        <div class="card mb-3">
-            <div class="card-body" th:each="group: ${groups}">
-                <h5 class="card-title" th:text="${group.groupName}">Group_name:</h5>
-                <p class="card-text" th:text="${group.subject}">Subject</p>
-                <p class="card-text" th:text="${group.description}">Description</p>
-                <p class="card-text" th:text="${#temporals.format(group.dateCreated, 'yyyy-MM-dd HH:mm:ss')}">Date Created</p>
-                <p class="card-text" th:text="${group.admin.fullName}"></p>
-                <button type="button" class="btn btn-secondary"   th:href="@{/groups/{id}/edit(id=${group.id})}">
-                    Edit
-                </button>
-                <button type="button" class="btn btn-danger"  th:href="@{/groups/{id}/delete(id=${group.id})}">
-                    Delete
-                </button>
+        <div class="row">
+            <!-- Example Study Group -->
+            <div class="col-md-6 col-lg-4 mb-3" th:each="group: ${groups}">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${group.groupName}">Group_name:</h5>
+                        <p class="card-text" th:text="${group.subject}">Subject</p>
+                        <p class="card-text" th:text="${group.description}">Description</p>
+                        <p class="card-text" th:text="${#temporals.format(group.dateCreated, 'yyyy-MM-dd HH:mm:ss')}">Date Created</p>
+                        <p class="card-text" th:text="${group.admin.fullName}">Admin Name</p>
+
+                        <a class="btn btn-secondary" th:href="@{/groups/{id}/edit(id=${group.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/groups/{id}/delete(id=${group.id})}">Delete</a>
+                    </div>
+                </div>
             </div>
+            <!-- Repeat the above block for each study group -->
         </div>
-        <!-- Repeat the above block for each study group -->
     </div>
 </div>
-</div>
 
 
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

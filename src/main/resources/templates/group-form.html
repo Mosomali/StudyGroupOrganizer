@@ -1,77 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Document</title>-->
-<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
-<!--</head>-->
-<!--<body>-->
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--    <a class="navbar-brand" href="#">Study Group Organizer</a>-->
-<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--        <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--        <ul class="navbar-nav ml-auto">-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">index</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Profile</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="group-page.html">GroupPage</a>-->
-<!--            </li>-->
-
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Logout</a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</nav>-->
-<!--<div class="container mt-5">-->
-<!--    &lt;!&ndash; Create New Study Group &ndash;&gt;-->
-<!--    <div class="card mb-4">-->
-<!--        <div class="card-header">-->
-<!--            <h3>Create New Study Group</h3>-->
-<!--        </div>-->
-<!--        <div class="card-body">-->
-<!--            <form th:action="@{${group.id} != null} ? @{/groups/{id}/edit(id=${group.id})} : @{/groups/new}" method="post" th:object="${group}">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="groupName">Group Name</label>-->
-<!--                    <input type="text" class="form-control" id="groupName" placeholder="Enter group name" th:field="*{groupName}">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="subject">subject</label>-->
-<!--                    <input type="text" class="form-control" id="subject" placeholder="Enter group name" th:field="*{subject}">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="description">Description</label>-->
-<!--                    <textarea class="form-control" id="description" rows="3" placeholder="Enter group description" th:field="*{description}"></textarea>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="dateCreated">DateCreated</label>-->
-<!--                    <input type="datetime-local" class="form-control" id="dateCreated" th:field="*{dateCreated}">-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="admin">Admin</label>-->
-<!--                    <input type="text" class="form-control" id="admin" placeholder="Enter group name" th:field="*{admin}">-->
-<!--                </div>-->
-<!--                <button type="submit" class="btn btn-primary">-->
-<!--                    Create Group-->
-<!--                </button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>-->
-<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -117,7 +43,7 @@
         </div>
         <div class="form-group">
             <label for="subject">Subject</label>
-            <input type="text" class="form-control" id="subject" placeholder="Enter subject" th:field="*{subject}">
+            <input type="text" class="form-control" id="subject" placeholder="Enter subject" th:field="*{subject}" required>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
@@ -146,43 +72,9 @@
 </div>
 </div>
 </div>
-<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
-<!--</body>-->
-<!--</html>-->
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <title>Create/Edit Group</title>-->
-<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
-
-<!--</head>-->
-<!--<body>-->
-<!--<form th:action="@{/groups/new}" th:object="${group}" method="post">-->
-<!--    <label for="groupName">Group Name:</label>-->
-<!--    <input type="text" id="groupName" th:field="*{groupName}" />-->
-
-<!--    <label for="subject">Subject:</label>-->
-<!--    <input type="text" id="subject" th:field="*{subject}" />-->
-
-<!--    <label for="description">Description:</label>-->
-<!--    <input type="text" id="description" th:field="*{description}" />-->
-
-<!--    <label for="admin">Admin:</label>-->
-<!--    <select id="admin" name="adminId" th:field="*{admin.id}">-->
-<!--        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.fullName}"></option>-->
-<!--    </select>-->
-
-<!--    <label for="members">Members:</label>-->
-<!--    <select id="members" name="memberIds" multiple>-->
-<!--        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.fullName}"></option>-->
-<!--    </select>-->
-
-<!--    <button type="submit">Save</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
 
